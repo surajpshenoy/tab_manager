@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import { FaAngleDoubleRight } from 'react-icons/fa'
 
 import Loading from "./Loading"
+import UserInfo from "./UserInfo";
 const url = 'https://course-api.com/react-tabs-project'
 
 function App() {
@@ -26,13 +27,16 @@ function App() {
     fetchUserInfo();
   },[]);
 
+  console.log(userInfo);
   if(loading){
     return (<main>
       <Loading/>
       </main>);
   }
 
-  return <h3> USER Info</h3>
+  return (
+    <UserInfo userInfo={userInfo} value={value}/>
+  );
 
 }
 
