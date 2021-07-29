@@ -7,6 +7,7 @@ const url = 'https://course-api.com/react-tabs-project'
 function App() {
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
+  const [value, setValue] = useState(0);
 
   const fetchUserInfo = async() => {
     setLoading(true);
@@ -14,8 +15,7 @@ function App() {
       const response = await fetch(url);
       const info = await response.json();
       setUserInfo(info);
-      setLoading(false)
-      console.log(info)
+      setLoading(false);
     }
     catch(error){
       console.log(error.message);
@@ -31,6 +31,8 @@ function App() {
       <Loading/>
       </main>);
   }
+
+  return <h3> USER Info</h3>
 
 }
 
