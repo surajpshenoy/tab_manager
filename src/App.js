@@ -6,15 +6,32 @@ const url = 'https://course-api.com/react-tabs-project'
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState([]);
 
+  const fetchUserInfo = async() => {
+    setLoading(true);
+    try{
+      const response = await fetch(url);
+      const info = await response.json();
+      setUserInfo(info);
+      setLoading(false)
+      console.log(info)
+    }
+    catch(error){
+      console.log(error.message);
+      setLoading(false);
+    }
+  }
   useEffect(() => {
+    fetchUserInfo();
+  },[]);
 
-  },[])
-  return (
-    <>
-    <Loading/>
-    </>
-  );
+  if(loading){
+    return (<main>
+      <Loading/>
+      </main>);
+  }
+
 }
 
 export default App;
